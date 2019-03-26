@@ -38,7 +38,8 @@ schema_view = get_schema_view(
 
 urlpatterns = [
 	path('admin/', admin.site.urls),
-	path('<version>/music/', include("music.urls", namespace='plan')),
+	path('<version>/music/', include("music.urls", namespace='music')),
+	path('<version>/course/', include("course.urls", namespace='course')),
 	path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
 	path('api-token-auth/', obtain_auth_token, name='api_token_auth'),
 

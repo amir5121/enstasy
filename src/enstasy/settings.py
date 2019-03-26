@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 	'rest_framework.authtoken',
 	'drf_yasg',
 	'accounting',
+	'course',
 	'music',
 	'utility',
 
