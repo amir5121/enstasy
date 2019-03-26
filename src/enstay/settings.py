@@ -38,7 +38,6 @@ INSTALLED_APPS = [
 	'rest_framework',
 	'django_filters',
 	'rest_framework.authtoken',
-	'oauth2_provider',
 	'accounting',
 	'music',
 	'utility',
