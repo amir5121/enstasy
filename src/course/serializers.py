@@ -39,16 +39,13 @@ class CategorySerializer(serializers.ModelSerializer):
 
 class CourseSerializer(serializers.ModelSerializer):
 	artwork = serializers.CharField(source='artwork.address')
-	files = serializers.SerializerMethodField()
+	files = serializers.SlugRelatedField(many=True, read_only=True, slug_field='address')
 	chapter = ChapterSerializer()
 	category = CategorySerializer()
 
 	class Meta:
 		model = models.Course
 		fields = '__all__'
-
-	def get_files(self, obj):
-		return [file.address for file in obj.files.all()]
 
 
 class CourseForChapterSerializer(serializers.ModelSerializer):
