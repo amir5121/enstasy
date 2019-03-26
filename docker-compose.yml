@@ -11,7 +11,7 @@ services:
     networks:
       - enstasy
     volumes:
-      - postgres_data:/var/lib/postgresql/data/
+      - ${ENSTACY_WEB_SOURCE_PATH}:/var/lib/postgresql/data/
 
   redis:
     image: redis:alpine
@@ -24,7 +24,7 @@ services:
     image: enstasy/enstasy_web:v1
     command: ['sh', '-c', 'python /srv/enstasy/manage.py migrate && uwsgi --ini /srv/enstasy/uwsgi/uwsgi.ini']
     volumes:
-      - .:/srv/enstacy
+      - ${ENSTACY_DB_DATA_PATH}:/srv/enstacy
     ports:
       - 8000:8000
     depends_on:
@@ -34,26 +34,9 @@ services:
       - enstasy
     restart: always
 
-env_file:
-  - .env
+  # env_file:
+  #   - .env
 
 networks:
   enstasy:
-
-volumes:
-  db_volume:
-      name: db_volume
-      driver: local
-      driver_opts:
-      type: non
-      device: ${ENSTACY_WEB_SOURCE_PATH}
-      o: bind
-
-  enstacy_source:
-      name: enstacy_source
-      driver: local
-      driver_opts:
-      type: non
-      device: ${ENSTACY_DB_DATA_PATH}
-      o: bind
 
