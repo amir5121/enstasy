@@ -3,17 +3,13 @@ FROM python:3.6-alpine
 # to the terminal with out buffering it first
 ENV PYTHONUNBUFFERED 1
 
-ENV INSTALL_PATH /srv
-
-ADD ./requirements.txt /srv/enstasy/requirements.txt
+ENV INSTALL_PATH /srv/enstasy
 
 RUN mkdir -p $INSTALL_PATH
 
 WORKDIR $INSTALL_PATH
 
-# RUN chmod +x run.sh
-# RUN chmod +x uwsgi.sh
-# RUN chmod +x telegram_bot.sh
+ADD ./requirements.txt /srv/enstasy/requirements.txt
 
 RUN apk add --no-cache --virtual .build-deps \
   build-base postgresql-dev libffi-dev gcc g++ jpeg-dev zlib-dev \
