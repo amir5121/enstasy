@@ -157,7 +157,9 @@ REST_FRAMEWORK = {
 	),
 	'DEFAULT_PERMISSION_CLASSES': (
 		'rest_framework.permissions.IsAuthenticated',
-	)
+	),
+	'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+	'PAGE_SIZE': 10
 }
 f = os.path.join(BASE_DIR, os.path.basename(BASE_DIR), "local_settings.py")
 if os.path.exists(f):
