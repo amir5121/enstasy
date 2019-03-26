@@ -24,7 +24,7 @@ services:
     image: enstasy/enstasy_web:v1
     command: ['sh', '-c', 'python /srv/enstasy/manage.py migrate && uwsgi --ini /srv/enstasy/uwsgi/uwsgi.ini']
     volumes:
-      - ${ENSTACY_WEB_SOURCE_PATH}:/srv/enstacy
+      - ${ENSTACY_WEB_SOURCE_PATH}:/srv/enstasy
     ports:
       - 8000:8000
     depends_on:
