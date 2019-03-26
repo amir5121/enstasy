@@ -1,6 +1,7 @@
 from rest_framework import serializers
 
 from course import models
+from utility.models import File
 
 
 class NarratorSerializer(serializers.ModelSerializer):
@@ -38,13 +39,16 @@ class CategorySerializer(serializers.ModelSerializer):
 
 class CourseSerializer(serializers.ModelSerializer):
 	artwork = serializers.CharField(source='artwork.address')
-	file = serializers.CharField(source='file.address')
+	files = serializers.SerializerMethodField()
 	chapter = ChapterSerializer()
 	category = CategorySerializer()
 
 	class Meta:
 		model = models.Course
 		fields = '__all__'
+
+	def get_files(self, obj):
+		return [file.address for file in obj.files.all()]
 
 
 class CourseForChapterSerializer(serializers.ModelSerializer):

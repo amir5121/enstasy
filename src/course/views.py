@@ -4,7 +4,7 @@ from rest_framework.permissions import AllowAny
 from course import models, serializers
 
 
-class MusicViewSet(viewsets.ReadOnlyModelViewSet):
+class CourseViewSet(viewsets.ReadOnlyModelViewSet):
 	permission_classes = [AllowAny, ]
 	queryset = models.Course.objects.all()
 	serializer_class = serializers.CourseSerializer
