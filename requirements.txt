@@ -1,6 +1,6 @@
 Django
 djangorestframework
-mysqlclient
+psycopg2
 uwsgi
 drf-yasg
 django-filter
