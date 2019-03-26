@@ -7,17 +7,26 @@ class Playlist(models.Model):
 	name = models.CharField(max_length=256)
 	artwork = models.ForeignKey(File, on_delete=models.PROTECT)
 
+	def __str__(self):
+		return self.name
+
 
 class Artist(models.Model):
 	name = models.CharField(max_length=256)
 	description = models.TextField(null=True, blank=True)
 	artwork = models.ForeignKey(File, on_delete=models.PROTECT)
 
+	def __str__(self):
+		return self.name
+
 
 class Album(models.Model):
 	name = models.CharField(max_length=256)
 	artwork = models.ForeignKey(File, on_delete=models.PROTECT)
 	artist = models.ForeignKey(Artist, on_delete=models.CASCADE, related_name='albums')
+
+	def __str__(self):
+		return self.name
 
 
 class Music(models.Model):
@@ -26,3 +35,6 @@ class Music(models.Model):
 	artwork = models.ForeignKey(File, on_delete=models.PROTECT, related_name='music_artwork')
 	playlist = models.ForeignKey(Playlist, on_delete=models.CASCADE, related_name='musics')
 	album = models.ForeignKey(Album, on_delete=models.CASCADE, related_name='musics')
+
+	def __str__(self):
+		return self.name
