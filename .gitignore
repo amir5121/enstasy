@@ -1,4 +1,5 @@
 src/.idea 
 *__pycache__*
 src/venv
+src/uwsgi/uwsgi.log
 .env
