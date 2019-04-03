@@ -41,6 +41,7 @@ INSTALLED_APPS = [
 	'drf_yasg',
 	'accounting',
 	'course',
+	'podcast',
 	'music',
 	'utility',
 
