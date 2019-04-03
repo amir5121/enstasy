@@ -13,6 +13,7 @@ class SeasonSerializer(serializers.ModelSerializer):
 
 class PodcastSerializer(serializers.ModelSerializer):
 	artwork = serializers.CharField(source='artwork.address')
+	file = serializers.CharField(source='file.address')
 
 	class Meta:
 		model = models.Podcast
